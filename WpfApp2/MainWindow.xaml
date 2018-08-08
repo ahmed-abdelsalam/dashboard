@@ -5,8 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="518" Width="563" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Visible">
+    <ScrollViewer CanContentScroll="True">
+        <Grid Name="dashboard" Margin="0,20,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <GridSplitter Grid.Column="0" Grid.RowSpan="20" BorderThickness="3" BorderBrush="Black" Width="3" Background="Black" HorizontalAlignment="Right"/>
+            <GridSplitter Grid.Column="1" Grid.RowSpan="20" BorderThickness="3" BorderBrush="Black" Width="3" Background="Black" HorizontalAlignment="Right"/>
+            <GridSplitter Grid.Row="0" Grid.ColumnSpan="20" BorderThickness="3" BorderBrush="Black" Height="3" Background="Black" VerticalAlignment="Bottom" ResizeDirection="Rows" HorizontalAlignment="Left"/>
+            <WebBrowser Grid.Column="0" Grid.Row="0" Source="https://support.linkdatacenter.net/WOListView.do?viewName=DC-Operation_QUEUE" Margin="5,2"/>
+            <WebBrowser Grid.Column="1"  Grid.Row="0" Source="https://support.linkdatacenter.net/WOListView.do?viewName=Topaz_QUEUE" Margin="5,2"/>
+            <WebBrowser Grid.Column="2" Grid.Row="0" Source="https://support.linkdatacenter.net/WOListView.do?viewName=Topaz_QUEUE" Margin="5,2"/>
+            <Button Content="New Row" HorizontalAlignment="Left" Margin="3,-20,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Grid.Column="1" Height="20" Grid.ColumnSpan="2"/>
+            <Button Content="New Browser" Grid.Column="3" HorizontalAlignment="Left" Margin="22,-20,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click_1" Height="20"/>
+        </Grid>
+    </ScrollViewer>
 </Window>
