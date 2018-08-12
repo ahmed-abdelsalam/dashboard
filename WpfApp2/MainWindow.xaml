@@ -4,31 +4,67 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2"
+        xmlns:cefSharp="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
         mc:Ignorable="d"
         Title="MainWindow" Height="518" Width="563" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Visible">
-    <ScrollViewer CanContentScroll="True">
-        <Grid Name="dashboard" Margin="0,20,0,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
-            <GridSplitter Grid.Column="0" Grid.RowSpan="20" BorderThickness="3" BorderBrush="Black" Width="3" Background="Black" HorizontalAlignment="Right"/>
-            <GridSplitter Grid.Column="1" Grid.RowSpan="20" BorderThickness="3" BorderBrush="Black" Width="3" Background="Black" HorizontalAlignment="Right"/>
-            <GridSplitter Grid.Row="0" Grid.ColumnSpan="20" BorderThickness="3" BorderBrush="Black" Height="3" Background="Black" VerticalAlignment="Bottom" ResizeDirection="Rows" HorizontalAlignment="Left"/>
-            <GridSplitter Grid.Row="1" Grid.ColumnSpan="20" BorderThickness="3" BorderBrush="Black" Height="3" Background="Black" VerticalAlignment="Bottom" ResizeDirection="Rows" HorizontalAlignment="Left"/>
-            <WebBrowser Name="w11" Grid.Column="0" Grid.Row="0" Source="https://support.linkdatacenter.net/WOListView.do?viewName=DC-Operation_QUEUE" Margin="5,2"/>
-            <WebBrowser Name="w12" Grid.Column="1"  Grid.Row="0" Source="https://support.linkdatacenter.net/WOListView.do?viewName=Topaz_QUEUE" Margin="5,2"/>
-            <WebBrowser Name="w13"  Grid.Column="2" Grid.Row="0" Source="https://support.linkdatacenter.net/WOListView.do?viewName=Topaz_QUEUE" Margin="5,2"/>
-            <Button Content="New Row" HorizontalAlignment="Left" Margin="66,-20,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Height="20"/>
-            <Button Content="New Browser" Grid.Column="1" HorizontalAlignment="Left" Margin="11,-20,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click_1" Height="20"/>
-            <TextBox Name="url" Grid.Column="1" HorizontalAlignment="Left" Height="14" Margin="144,-17,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="116" Grid.ColumnSpan="2" FontSize="8" TouchEnter="TextBox_TouchEnter" KeyDown="url_KeyDown"/>
-            <TextBox Name="index" Grid.Column="1" HorizontalAlignment="Left" Height="15" Margin="120,-17,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="23" FontSize="8"/>
+    <Grid x:Name="grid">
+        <StackPanel Name="popstack" Background="#FF0D0E11" HorizontalAlignment="Left" VerticalAlignment="Top" MinWidth="30" Height="{Binding ActualHeight, ElementName=grid, Mode=OneWay}">
+            <Button x:Name="menu" Background="#FF0D0E11" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="23" Height="23" Margin="2,2,0,0" Click="menu_Click" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                <DockPanel >
+                    <Image Source="menu.png"  />
+                </DockPanel>
+            </Button>
+            <Button x:Name="menu1" Background="#FF0D0E11" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="23" Height="23" Margin="2,2,0,0" Click="menu_Click" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                <DockPanel >
+                    <Image Source="menu.png"  />
+                </DockPanel>
+            </Button>
+            <Button x:Name="menu2" Background="#FF0D0E11" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="23" Height="23" Margin="2,2,0,0" Click="menu_Click" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                <DockPanel >
+                    <Image Source="menu.png"  />
+                </DockPanel>
+            </Button>
+            <Button x:Name="menu3" Background="#FF0D0E11" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="23" Height="23" Margin="2,2,0,0" Click="menu_Click" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                <DockPanel >
+                    <Image Source="menu.png"  />
+                </DockPanel>
+            </Button>
 
-        </Grid>
-    </ScrollViewer>
+
+
+        </StackPanel>
+        <DockPanel Margin="30,0,0,0" Background="#FF10192C" Height="40" VerticalAlignment="Top">
+            <Button Content="New Row" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Center" Width="74" Click="Button_Click" Height="20" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Top"/>
+            <Button Content="New Browser" Grid.Column="1" HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Center" Width="74" Click="Button_Click_1" Height="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox Name="url" Grid.Column="1" HorizontalAlignment="Left" Height="14" Margin="144,0,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="116" Grid.ColumnSpan="2" FontSize="8" TouchEnter="TextBox_TouchEnter" KeyDown="url_KeyDown" VerticalContentAlignment="Center"/>
+            <TextBox Name="index" Grid.Column="1" HorizontalAlignment="Left" Height="15" Margin="0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="31" FontSize="8" VerticalContentAlignment="Center" RenderTransformOrigin="-5.194,1.733"/>
+        </DockPanel>
+        <ScrollViewer Name="scroll" CanContentScroll="True" Background="#FF282D42" Margin="30,40,0,0" Padding="0">
+
+            <Grid  Name="dashboard" Margin="0" Background="#FF2D3242">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <GridSplitter Grid.Column="0" Grid.RowSpan="20" BorderThickness="6" BorderBrush="#FF2D3242" Width="3" Background="Black" HorizontalAlignment="Right"/>
+                <GridSplitter Grid.Column="1" Grid.RowSpan="20" BorderThickness="6" BorderBrush="#FF2D3242" Width="3" Background="Black" HorizontalAlignment="Right"/>
+                <GridSplitter Grid.Row="0" Grid.ColumnSpan="20" BorderThickness="6" BorderBrush="Black" Height="3" Background="Black" VerticalAlignment="Bottom" ResizeDirection="Rows" HorizontalAlignment="Left"/>
+                <GridSplitter Grid.Row="1" Grid.ColumnSpan="20" BorderThickness="6" BorderBrush="Black" Height="3" Background="Black" VerticalAlignment="Bottom" ResizeDirection="Rows" HorizontalAlignment="Left"/>
+                <WebBrowser Name="w11" Grid.Column="0" Grid.Row="0" Source="https://support.linkdatacenter.net/WOListView.do?viewName=DC-Operation_QUEUE" Margin="10" Panel.ZIndex="1"/>
+                <WebBrowser Name="w12" Grid.Column="1"  Grid.Row="0" Source="https://support.linkdatacenter.net/WOListView.do?viewName=Topaz_QUEUE" Margin="10"/>
+                <WebBrowser Name="w13"  Grid.Column="2" Grid.Row="0" Source="https://support.linkdatacenter.net/WOListView.do?viewName=Topaz_QUEUE" Margin="10"/>
+                <Button Name="add" Grid.Column="0" Grid.Row="1" Background="#FF414964" Padding="10" ScrollViewer.CanContentScroll="True" Margin="10" Click="Button_Click_2" >
+                    <DockPanel >
+                        <Image Source="add.png" Margin="20" Width="90" Height="90" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+                    </DockPanel>
+                </Button>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
 </Window>
